@@ -8,7 +8,7 @@ using FirmaApp.Models;
 
 namespace FirmaApp.ViewModels
 {
-    class WorkerViewModel
+    public class WorkerViewModel
     {
         public WorkerViewModel()
         {
@@ -18,8 +18,7 @@ namespace FirmaApp.ViewModels
         public ObservableCollection<Worker> Workers
         {
             get;
-            set;
-           
+            set;           
         }
 
 
@@ -29,12 +28,16 @@ namespace FirmaApp.ViewModels
             ObservableCollection<Worker> workers = new ObservableCollection<Worker>();
 
             workers.Add(new Worker("Dawid", "Dylus"));
-            workers.Add(new Worker("Patryk", "Kowalski", "Etat"));
+            workers.Add(new Worker("Patryk", "Kowalski"));
             workers.Add(new Worker("Janusz", "Chrobry"));
 
             Workers = workers;
         }
 
+        public int GetWorkerCount()
+        {
+            return Workers.Count;
+        }
 
 
 

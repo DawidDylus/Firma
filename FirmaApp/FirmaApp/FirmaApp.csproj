@@ -55,6 +55,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Models\Contract.cs" />
+    <Compile Include="Models\Etat.cs" />
+    <Compile Include="Models\Staż.cs" />
     <Compile Include="ViewModels\WorkerViewModel.cs" />
     <Compile Include="Views\WorkerView.xaml.cs">
       <DependentUpon>WorkerView.xaml</DependentUpon>

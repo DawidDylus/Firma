@@ -7,17 +7,20 @@ using System.ComponentModel;
 
 namespace FirmaApp.Models 
 {
-    class Worker : INotifyPropertyChanged
+    public class Worker : INotifyPropertyChanged
     {
 
-        public Worker(string _firstName, string _lastName, string _contract = "Staż")
+        public Worker(string _firstName, string _lastName)
         {
             FirstName = _firstName;
             LastName = _lastName;
-            Contract = _contract;
+            _contract = new Etat();
         }
 
-        private string firstName;        
+
+
+
+        private string firstName;
         public string FirstName
         {
             get
@@ -29,12 +32,12 @@ namespace FirmaApp.Models
                 if (firstName != value)
                 {
                     firstName = value;
-                    RaisePropertyChanged("FirstName");
+                    RaisePropertyChanged("FirstName");                    
                 }
             }
         }       //Getter,Setter for firstName variable
 
-        private string lastName;        
+        private string lastName;
         public string LastName
         {
             get
@@ -50,27 +53,40 @@ namespace FirmaApp.Models
                 }
             }
         }
-        
-        private string contract;        
-        public string Contract
+
+        private Contract _contract;
+        public Contract contract
         {
             get
             {
-                return contract;
-            }
-            set
-            {
-                if (contract != value)
-                {
-                    contract = value;
-                    RaisePropertyChanged("Contract");
-                }
+                return _contract;
             }
         }
 
 
+        public string salary
+        {
+            get
+            {
+                return Salary();
+            }
+        }
 
+        public override string ToString()
+        {
+            return FirstName + " " + LastName + " " + _contract.ContractName + " " + _contract.Salary();
+        }
+        
+                    
 
+        
+        
+        public string Salary()
+        {
+            return _contract.Salary().ToString();
+        }
+        
+        
 
         void RaisePropertyChanged(string prop)
         {

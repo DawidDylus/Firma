@@ -9,7 +9,7 @@
         Title="MainWindow" Height="450" Width="800">
 
 	<Grid>
-		<views:WorkerView x:Name="StudentViewControl"/>
+		<views:WorkerView/>
 	</Grid>
 
 </Window>

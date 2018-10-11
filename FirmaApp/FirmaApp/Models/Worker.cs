@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel;
+using System.Collections.ObjectModel;
+
 
 namespace FirmaApp.Models 
 {
@@ -14,7 +16,26 @@ namespace FirmaApp.Models
         {
             FirstName = _firstName;
             LastName = _lastName;
-            _contract = new Etat();
+
+            
+            ContractType();
+            Contract = new Staz();
+            
+           
+        }
+
+
+        
+        public string salary
+        {
+            get
+            {
+                return Salary();
+            }
+            set
+            {
+
+            }   
         }
 
 
@@ -54,43 +75,88 @@ namespace FirmaApp.Models
             }
         }
 
-        private Contract _contract;
-        public Contract contract
+        private Contract contract;
+        public Contract Contract
         {
             get
             {
-                return _contract;
+                return contract;
+            }      
+            set
+            {   if (contract != value)
+                {
+                    contract = value;
+                    RaisePropertyChanged("Contract");
+                }
             }
         }
-
-
-        public string salary
-        {
-            get
-            {
-                return Salary();
-            }
-        }
+                               
 
         public override string ToString()
         {
-            return FirstName + " " + LastName + " " + _contract.ContractName + " " + _contract.Salary();
-        }
-        
-                    
-
-        
+            return FirstName + " " + LastName + " " + contract.Salary();
+        }                                        
         
         public string Salary()
         {
-            return _contract.Salary().ToString();
+            return contract.Salary().ToString();
+        }
+                 
+
+          public ObservableCollection<Contract> Contracts
+          {
+            get;
+            set;
+          }
+
+        
+          private Contract _scontract;
+          public Contract SContract
+          {
+              get
+              {
+                  return _scontract;
+              }
+              set
+              {
+                
+                if (_scontract != value)
+                  {
+                    
+                    _scontract = value;
+                    ChangeContract();
+                    RaisePropertyChanged("Scontract");   
+                    
+                                              
+                }
+              }
+          }         
+                     
+        
+        public void ContractType()
+        {
+            ObservableCollection<Contract> contracts = new ObservableCollection<Contract>()
+            {
+                new Staz(),
+                new Etat()
+            };
+            Contracts = contracts;
+        }
+
+        
+        public void ChangeContract()
+        {
+            Contract = SContract;                 ///changing object contract to type picked by ComboBox  
+            RaisePropertyChanged("Contract");     ///update changes   
+            RaisePropertyChanged("salary");      
         }
         
-        
+
+
 
         void RaisePropertyChanged(string prop)
         {
-            if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs(prop)); }
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop));
         }
         public event PropertyChangedEventHandler PropertyChanged;
 

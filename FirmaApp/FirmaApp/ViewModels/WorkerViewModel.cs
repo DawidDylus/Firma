@@ -12,7 +12,8 @@ namespace FirmaApp.ViewModels
     {
         public WorkerViewModel()
         {
-            LoadWorkers();
+            LoadWorkers();           
+            
         }
 
         public ObservableCollection<Worker> Workers
@@ -20,16 +21,16 @@ namespace FirmaApp.ViewModels
             get;
             set;           
         }
-
-
+                
 
         public void LoadWorkers()
         {
-            ObservableCollection<Worker> workers = new ObservableCollection<Worker>();
-
-            workers.Add(new Worker("Dawid", "Dylus"));
-            workers.Add(new Worker("Patryk", "Kowalski"));
-            workers.Add(new Worker("Janusz", "Chrobry"));
+            ObservableCollection<Worker> workers = new ObservableCollection<Worker>
+            {
+                new Worker("Dawid", "Dylus"),
+                new Worker("Patryk", "Kowalski"),
+                new Worker("Janusz", "Chrobry")
+            };
 
             Workers = workers;
         }
@@ -39,7 +40,10 @@ namespace FirmaApp.ViewModels
             return Workers.Count;
         }
 
+       
+        
 
+        
 
     }
 }

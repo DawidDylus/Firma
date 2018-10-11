@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace FirmaApp.Models
 {
-     public class Staż : Contract
+     public class Staz : Contract
     {
-        public Staż(string _contractName = "Staż", double _monthlyWages = 1500 )
+        public Staz(string _contractName = "Staż", double _monthlyWages = 1500 )
         {
             ContractName = _contractName;
             MonthlyWages = _monthlyWages;

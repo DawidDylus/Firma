@@ -60,7 +60,7 @@ namespace FirmaApp.Models
                 if (overtimeHours != value)
                 {
                     overtimeHours = value;
-                    RaisePropertyChanged("OvertimeHours");
+                    RaisePropertyChanged("OvertimeHours");                                        
                 }
             }
         }
@@ -71,7 +71,7 @@ namespace FirmaApp.Models
 
         void RaisePropertyChanged(string prop)
         {
-            if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs(prop)); }
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop));
         }
         public event PropertyChangedEventHandler PropertyChanged;
 

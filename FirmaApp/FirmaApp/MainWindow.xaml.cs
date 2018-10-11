@@ -24,7 +24,7 @@ namespace FirmaApp
         public MainWindow()
         {
             InitializeComponent();
-            DataContext = new WorkerViewModel();       
+            DataContext = new WorkerViewModel();
         }
               
 

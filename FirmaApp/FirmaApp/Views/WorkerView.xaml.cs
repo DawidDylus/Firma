@@ -12,9 +12,11 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using FirmaApp.ViewModels;
 
 namespace FirmaApp.Views
 {
+
     /// <summary>
     /// Interaction logic for WorkerView.xaml
     /// </summary>
@@ -23,6 +25,9 @@ namespace FirmaApp.Views
         public WorkerView()
         {
             InitializeComponent();
+           
+            
         }
+               
     }
 }
